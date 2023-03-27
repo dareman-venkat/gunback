@@ -5,7 +5,7 @@ import winston from "winston";
 import jsonwebtoken from "jsonwebtoken";
 
 import CustomerDetailsRoutes from "./routes/CustomerDetails.js";
-import RentaladminRoutes from "./routes/Rentaladmin.js";
+import cartRoutes from "./routes/cart.js";
 import gunCollectionRoutes from "./routes/gunCollection.js";
 import PaymentDetailsRoutes from "./routes/PaymentDetails.js";
 import cors from "cors";
@@ -37,7 +37,7 @@ app.use(cors());
 app.use(express.json());
 app.use(bodyParser.json());
 mongoose
-  .connect("mongodb://127.0.0.1:27017/gunRental", {
+  .connect("mongodb+srv://sharan:Augusta12@cluster0.k2otw1p.mongodb.net/gunprojectvenkat", {
     useNewUrlParser: true,
     //useCreateIndex: true,
     useUnifiedTopology: true,
@@ -54,7 +54,7 @@ mongoose
   });
 
 app.use("/CustomerDetails", CustomerDetailsRoutes);
-app.use("/Rentaladmin", RentaladminRoutes);
+app.use("/cart", cartRoutes);
 app.use("/gunCollection", gunCollectionRoutes);
 app.use("/PaymentDetails", PaymentDetailsRoutes);
 

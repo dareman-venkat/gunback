@@ -180,7 +180,7 @@ router.get("/active", activeUsers);
 
 router.get("/noactive", noactiveUsers);
 
-router.post("/post", createUser);
+router.post("/signup", createUser);
 
 router.post("/login", login);
 

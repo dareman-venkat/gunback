@@ -5,7 +5,6 @@ var ObjectId = Schema.ObjectId;
 var date = new Date();
 var milliseconds = date.getTime();
 const gunCollectionschenma= new Schema({
-    "gunId": ObjectId,
     "gunModelName": String,
     "gunCompany": String,
     "gunstock": Number,
@@ -15,8 +14,18 @@ const gunCollectionschenma= new Schema({
     "guntimestamp": Number,
     "plateNo": String,
     "gunColor": String,
-    "isActive": String,
-    "isDeleted": String
+    "isActive": {
+        type: Boolean,
+        default: true
+    },
+    "isDeleted": {
+        type: Boolean,
+        default: false
+    },
+    "inStock": {
+        type: Boolean,
+        default: true
+    }
     
 
 });
