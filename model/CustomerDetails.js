@@ -1,5 +1,6 @@
 import bcrypt from "bcryptjs";
 import mongoose from "mongoose";
+import { generateJwtToken } from "../middleware/generatetoken.js"
 const Schema = mongoose.Schema;
 var ObjectId = Schema.ObjectId;
 const CustomerDetailsschenma= new Schema({
@@ -101,10 +102,12 @@ export async function login(email,password,callback){
    // console.log(x)
     if(user!=null){
       if(x==password){
+        const accesstoken = generateJwtToken({firstName : user[0].firstName,lastName :user[0].lastName,email : user[0].email})
           callback={
             "statusCode": 200,
             "result": "Record Updated",
             "hasError": false,
+            "accesstoken": accesstoken,
             "message": "Successfully Login As Customer",
             "requestTime": "2022-08-12T05:55:27.0577545Z"
           }
