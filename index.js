@@ -1,11 +1,11 @@
-import express from "express"; 
+import express from "express";
 import bodyParser from "body-parser";
 import mongoose from "mongoose";
 import winston from "winston";
 import jsonwebtoken from "jsonwebtoken";
 
 import CustomerDetailsRoutes from "./routes/CustomerDetails.js";
-import RentaladminRoutes from "./routes/Rentaladmin.js";
+import cartRoutes from "./routes/cart.js";
 import gunCollectionRoutes from "./routes/gunCollection.js";
 import PaymentDetailsRoutes from "./routes/PaymentDetails.js";
 import cors from "cors";
@@ -37,11 +37,14 @@ app.use(cors());
 app.use(express.json());
 app.use(bodyParser.json());
 mongoose
-  .connect("mongodb://127.0.0.1:27017/gunRental", {
-    useNewUrlParser: true,
-    //useCreateIndex: true,
-    useUnifiedTopology: true,
-  })
+  .connect(
+    "mongodb+srv://sharan:Augusta12@cluster0.k2otw1p.mongodb.net/gunprojectvenkat",
+    {
+      useNewUrlParser: true,
+      //useCreateIndex: true,
+      useUnifiedTopology: true,
+    }
+  )
   .then(() => {
     /** ready to use. The `mongoose*/
     console.log("MongoDB connected");
@@ -54,7 +57,7 @@ mongoose
   });
 
 app.use("/CustomerDetails", CustomerDetailsRoutes);
-app.use("/Rentaladmin", RentaladminRoutes);
+app.use("/cart", cartRoutes);
 app.use("/gunCollection", gunCollectionRoutes);
 app.use("/PaymentDetails", PaymentDetailsRoutes);
 
@@ -70,7 +73,7 @@ app.get("/token/login", async (req, res) => {
   );
   console.log(token);
   res.json({
-    message: "Successs",
+    message: "Success",
     token: token,
   });
 });
