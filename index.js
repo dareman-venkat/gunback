@@ -1,4 +1,4 @@
-import express from "express"; 
+import express from "express";
 import bodyParser from "body-parser";
 import mongoose from "mongoose";
 import winston from "winston";
@@ -37,11 +37,14 @@ app.use(cors());
 app.use(express.json());
 app.use(bodyParser.json());
 mongoose
-  .connect("mongodb+srv://sharan:Augusta12@cluster0.k2otw1p.mongodb.net/gunprojectvenkat", {
-    useNewUrlParser: true,
-    //useCreateIndex: true,
-    useUnifiedTopology: true,
-  })
+  .connect(
+    "mongodb+srv://sharan:Augusta12@cluster0.k2otw1p.mongodb.net/gunprojectvenkat",
+    {
+      useNewUrlParser: true,
+      //useCreateIndex: true,
+      useUnifiedTopology: true,
+    }
+  )
   .then(() => {
     /** ready to use. The `mongoose*/
     console.log("MongoDB connected");
@@ -70,7 +73,7 @@ app.get("/token/login", async (req, res) => {
   );
   console.log(token);
   res.json({
-    message: "Successs",
+    message: "Success",
     token: token,
   });
 });
