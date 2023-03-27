@@ -104,7 +104,7 @@ app.get("/check/:token", async (req, res) => {
     } else {
       console.log(error);
       res.status(401).json({
-        message: " Invalid Token",
+        message: " Invalid Tokens",
       });
     }
   }
