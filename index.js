@@ -113,7 +113,7 @@ app.get("/check/:token", async (req, res) => {
   }
 });
 
-app.get("/", (req, res) => res.send("Welcome to the gun Rental API!"));
+app.get("/", (req, res) => res.send("Welcome to the gunS Rental API!"));
 app.all("*", (req, res) =>
   res.send("You've tried reaching a route that doesn't exist.")
 );
